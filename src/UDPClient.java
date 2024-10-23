@@ -6,7 +6,7 @@ import java.net.InetAddress;
 public class UDPClient {
     public static void main(String[] args) {
         if (args.length != 2) {
-            System.out.println("Usage: write 'java UDPClient <host> <port>'");  //If we don't write 2 arguments for host and port, we display a message to inform how to do it.
+            System.out.println("Usage: write 'java UDPClient <host> <port>'");  //If we don't write 2 arguments for host and port, we display a usage to inform how to do it.
             return;
         }
 

@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4058e82-6648-4e08-85a8-13547db205c0" name="Changes" comment="initial commit">
-      <change afterPath="$PROJECT_DIR$/src/UDPClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+    <list default="true" id="a4058e82-6648-4e08-85a8-13547db205c0" name="Changes" comment="UDP Client">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UDPClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UDPClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UDPServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/UDPServer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UDPServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UDPServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -177,12 +175,29 @@
       <option name="project" value="LOCAL" />
       <updated>1729693462114</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="UDP Client">
+      <option name="closed" value="true" />
+      <created>1729695434815</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1729695434815</updated>
+    </task>
+    <task id="LOCAL-00012" summary="UDP Client">
+      <option name="closed" value="true" />
+      <created>1729695455997</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1729695455997</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test" />
     <MESSAGE value="initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
+    <MESSAGE value="UDP Client" />
+    <option name="LAST_COMMIT_MESSAGE" value="UDP Client" />
   </component>
 </project>
