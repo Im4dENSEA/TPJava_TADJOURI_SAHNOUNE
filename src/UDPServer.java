@@ -1,46 +1,55 @@
-import java.io.IOException;
-import java.net.*;
-
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 
 public class UDPServer {
-    private DatagramSocket socket;
     private int port;
+
+
+    public UDPServer() {
+        this.port = 8080; // Port par défaut
+    }
+
 
     public UDPServer(int port) {
         this.port = port;
     }
-    public UDPServer(){
-        this(8080);
 
-    }
 
-    public void launch() throws IOException {
-        socket = new DatagramSocket(port);
-        System.out.println("Server is on port" + port);
+    public void launch() {
+        try (DatagramSocket socket = new DatagramSocket(port)) {
+            System.out.println("Server is running on port: " + port);
 
-        while (true){
-            byte[] buffer =new byte[1024];
-            DatagramPacket packet = new DatagramPacket(buffer,buffer.length);
-            try {
+            byte[] buffer = new byte[1024];
+
+            while (true) {
+                DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
                 socket.receive(packet);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+                InetAddress clientAddress = packet.getAddress();
+                int clientPort = packet.getPort();
 
-            String message = new String(packet.getData(), 0, packet.getLength(), "UTF-8");
-            if (message.length() >1024) {
-                message = message.substring(0, 1024);
+                String message = new String(packet.getData(), 0, packet.getLength(), "UTF-8");
+
+                if (message.length() > 1024) {
+                    message = message.substring(0, 1024);
+                }
+
+                System.out.printf("Received from %s:%d - %s%n", clientAddress.getHostAddress(), clientPort, message);
             }
-            InetAddress clientAddress = packet.getAddress();
-            int clientPort = packet.getPort();
-            System.out.println("You received a message from"+clientAddress+":"+clientPort+":"+"-"+message);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-
-
     }
+
     @Override
     public String toString() {
         return "UDPServer listening on port " + port;
+    }
+
+    public static void main(String[] args) {
+        int port = args.length > 0 ? Integer.parseInt(args[0]) : 8080;
+        UDPServer server = new UDPServer(port);
+        System.out.println(server);
+        server.launch();
     }
 }
