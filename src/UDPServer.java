@@ -7,7 +7,7 @@ public class UDPServer {
 
 
     public UDPServer() {
-        this.port = 8080; // Port par défaut
+        this.port = 8080; //Default port
     }
 
 
