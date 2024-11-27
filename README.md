@@ -10,3 +10,5 @@ This lab project is a chat application developed in Java that uses sockets to en
 ### Structure ###
 * UDPServer.java: UDP server that listens for messages from clients and displays them along with the client's address.
 * UDPClient.java: UDP client that reads user input and sends messages to the UDP server.
+
+images/UDP_Client.png
