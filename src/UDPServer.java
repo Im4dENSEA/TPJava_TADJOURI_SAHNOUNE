@@ -2,32 +2,38 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
+/**
+ * This class implements a UDP server that listens for messages from clients
+ * and displays them.
+ */
 public class UDPServer {
     private int port;
 
-
-
+    /**
+     * Constructor to initialize the server with a port number.
+     *
+     * @param port The port number on which the server listens.
+     */
     public UDPServer(int port) {
         this.port = port;
     }
 
-
+    /**
+     * Starts the UDP server, listening for and displaying incoming messages.
+     */
     public void launch() {
         try (DatagramSocket socket = new DatagramSocket(port)) {
             System.out.println("Server is running on port: " + port);
 
-            byte[] buffer = new byte[1024]; //Buffer to store the incoming data, we assume that the server can store a maximum of 1024 bytes.
+            byte[] buffer = new byte[1024];
 
-            // Usage of an infinite loop to keep the server running.
             while (true) {
-                DatagramPacket packet = new DatagramPacket(buffer, buffer.length); // We create a DatagramPacket with the size of the buffer.
+                DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
                 socket.receive(packet);
                 InetAddress clientAddress = packet.getAddress();
-                int clientPort = packet.getPort(); //We get the client IP address and port with InetAddress method.
+                int clientPort = packet.getPort();
 
                 String message = new String(packet.getData(), 0, packet.getLength(), "UTF-8");
-
-                //We do the truncation for message with a length higher than 1024 bytes, so we divide the message at 1024 bytes each time until the message length is under 1024 bytes.
 
                 if (message.length() > 1024) {
                     message = message.substring(0, 1024);
@@ -45,17 +51,20 @@ public class UDPServer {
         return "UDPServer listening on port " + port;
     }
 
-    // On the main method, we print a Usage in case the user don't specify the port number when he try to launch java UDPServer.
+    /**
+     * Main method to start the UDP server.
+     *
+     * @param args Command-line arguments: port number.
+     */
     public static void main(String[] args) {
         if (args.length != 1) {
-            System.out.println("Usage: 'java UDPServer <PORT>'"+"\n -Port                                  port à utiliser pour le serveur");
+            System.out.println("Usage: 'java UDPServer <PORT>'");
+            return;
         }
 
-        else if(args.length == 1) {
-            int port = args.length > 0 ? Integer.parseInt(args[0]) : 8080;
-            UDPServer server = new UDPServer(port);
-            System.out.println(server);
-            server.launch();
-        }
+        int port = Integer.parseInt(args[0]);
+        UDPServer server = new UDPServer(port);
+        System.out.println(server);
+        server.launch();
     }
 }
