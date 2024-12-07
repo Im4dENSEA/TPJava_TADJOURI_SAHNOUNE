@@ -23,25 +23,35 @@ public class UDPServer {
      */
     public void launch() {
         try (DatagramSocket socket = new DatagramSocket(port)) {
-            System.out.println("Server is running on port: " + port);
+            // Start the server and notify that it is running
+            System.out.println("UDP Server is running on port: " + port);
 
-            byte[] buffer = new byte[1024];
+            byte[] buffer = new byte[1024]; // Buffer to store incoming data (max 1024 bytes)
 
             while (true) {
+                // Prepare a packet to receive data
                 DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
-                socket.receive(packet);
+                socket.receive(packet); // Wait for incoming data
+
+                // Extract client details
                 InetAddress clientAddress = packet.getAddress();
                 int clientPort = packet.getPort();
 
+                // Convert the received data to a string (UTF-8 encoding)
                 String message = new String(packet.getData(), 0, packet.getLength(), "UTF-8");
 
-                if (message.length() > 1024) {
-                    message = message.substring(0, 1024);
-                }
+                // Log the received message with client information
+                System.out.printf("Client [%s:%d]: %s%n", clientAddress.getHostAddress(), clientPort, message);
 
-                System.out.printf("Received from %s:%d - %s%n", clientAddress.getHostAddress(), clientPort, message);
+                // Send acknowledgment or echo the message back
+                String response = "Server: Received your message -> " + message;
+                byte[] responseBytes = response.getBytes("UTF-8");
+                DatagramPacket responsePacket = new DatagramPacket(responseBytes, responseBytes.length, clientAddress, clientPort);
+                socket.send(responsePacket);
+                System.out.println("Server: Sent acknowledgment to client.");
             }
         } catch (Exception e) {
+            // Print the stack trace for any errors
             e.printStackTrace();
         }
     }
@@ -58,6 +68,7 @@ public class UDPServer {
      */
     public static void main(String[] args) {
         if (args.length != 1) {
+            // Display usage instructions if the arguments are incorrect
             System.out.println("Usage: 'java UDPServer <PORT>'");
             return;
         }
