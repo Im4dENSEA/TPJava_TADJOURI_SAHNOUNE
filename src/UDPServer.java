@@ -44,7 +44,7 @@ public class UDPServer {
                 System.out.printf("Client [%s:%d]: %s%n", clientAddress.getHostAddress(), clientPort, message);
 
                 // Send acknowledgment or echo the message back
-                String response = "Server: Received your message -> " + message;
+                String response = "echo from Server : " + message;
                 byte[] responseBytes = response.getBytes("UTF-8");
                 DatagramPacket responsePacket = new DatagramPacket(responseBytes, responseBytes.length, clientAddress, clientPort);
                 socket.send(responsePacket);
