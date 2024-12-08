@@ -86,6 +86,8 @@ Here are the terminal screenshots:
 Here are the terminal screenshots:
 
 ![My image](images/TCPMultiClient_Server.png)
+![My image](images/TCPMultiClient_Client1.png)
+![My image](images/TCPMultiClient_Client2.png)
 
 
 
