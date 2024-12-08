@@ -42,7 +42,7 @@ javac -d ../bin com/example/network/main/*.java
 
 
 
-### **1 – Creating a UDP Client-Server**  
+### **1 – Creating a UDP Client-Server**  ###
 
 * UDPServer.java: UDP server that listens for messages from clients and displays them along with the client's address.
 * UDPClient.java: UDP client that reads user input and sends messages to the UDP server.
@@ -59,7 +59,7 @@ Here are the terminal screenshots:
 
 
 
-## **2 – Creating a TCP Client-Server** ##
+### **2 – Creating a TCP Client-Server** ###
 
 * TCPServer.java: A basic TCP server that handles one client at a time.
 * TCPClient.java: A client that establishes a TCP connection and exchanges messages with the server.
@@ -69,13 +69,13 @@ How to run:
 
 Here are the terminal screenshots:
 
-![My image](images/TCP_Client.png)
+![My image](images/TCPClient.png)
 
-![My image](images/TCP_Server.png)
+![My image](images/TCPServer.png)
 
 
 
-## **3 – Server accepting multiple TCP connections** ##
+### **3 – Server accepting multiple TCP connections** ###
 
 * TCPMultiServer.java: A TCP server capable of handling multiple clients simultaneously.
 * ConnectionThread.java: A thread class that manages communication with an individual client.
@@ -88,6 +88,26 @@ Here are the terminal screenshots:
 ![My image](images/TCPMultiClient_Server.png)
 ![My image](images/TCPMultiClient_Client1.png)
 ![My image](images/TCPMultiClient_Client2.png)
+
+
+
+## **Creating, Compiling, and Executing a JAR File**
+
+Once all classes are compiled and stored in the `bin` directory, you can package them into an executable JAR file.
+
+### **1. Create a Manifest File and .jar file**
+* The JAR file requires a manifest file that specifies the main class (entry point) of your program. Create a file named `manifest.mf` with the following content:
+Manifest-Version: 1.0
+Main-Class: com.example.network.main.Main
+
+* Save the manifest.mf file in the root of your src project directory(where there is bin with .class files).
+* Run the following command from the directory containing the bin directory and the manifest.mf file: jar cvfm TP_JAVA.jar manifest.mf -C bin .
+* To ensure the JAR file was created correctly, list its contents with the following command: jar tf MyProject.jar
+
+### **Run it with different argument**
+There is already a .jar file create in our project but if you want to create another one:
+To run the program using the JAR file, use the java -jar command followed by the name of the JAR file and the desired arguments. For example:
+java -jar MyProject.jar tcpServer 9090 in a terminal and in an other terminal java -jar MyProject.jar tcpClient localhost 9090
 
 
 
