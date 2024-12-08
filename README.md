@@ -53,9 +53,9 @@ How to run:
 
 Here are the terminal screenshots:
 
-![My image](images/UDP_Client.png)
+![My image](images/UDPClient.png)
+![My image](images/UDPServer.png)
 
-![My image](images/UDP_Server.png)
 
 
 
