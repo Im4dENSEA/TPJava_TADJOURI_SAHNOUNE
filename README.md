@@ -69,9 +69,9 @@ How to run:
 
 Here are the terminal screenshots:
 
-![My image](images/TCP_Client.png)
+![My image](images/TCPClient.png)
 
-![My image](images/TCP_Server.png)
+![My image](images/TCPServer.png)
 
 
 
