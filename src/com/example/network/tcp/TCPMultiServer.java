@@ -1,5 +1,8 @@
+package com.example.network.tcp;
 import java.net.ServerSocket;
 import java.net.Socket;
+
+import com.example.network.threads.ConnectionThread;
 
 /**
  * This class implements a multi-threaded TCP server capable of handling

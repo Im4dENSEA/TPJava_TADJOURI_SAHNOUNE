@@ -1,3 +1,5 @@
+package com.example.network.udp;
+
 import java.io.Console;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
